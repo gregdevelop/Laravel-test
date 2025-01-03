@@ -3,7 +3,7 @@
 # Prueba Técnica - Desarrollador Junior PHP / Laravel
 
 ## Duración
-1 hora.
+2 horas.
 
 ## Instrucciones
 Por favor, sigue las instrucciones de la prueba a continuación. Asegúrate de completar todos los pasos y sube tu código a un repositorio como un pull request.
@@ -12,22 +12,21 @@ Por favor, sigue las instrucciones de la prueba a continuación. Asegúrate de c
 
 ## Secciones de la Prueba
 
-### 1. Fundamentos de PHP
+### Test 1
 
-Crea una función en PHP que reciba un array de números y devuelva el promedio de esos números. Si el array está vacío, debe devolver un mensaje de error.
+Usando este proyecto, crea una función en PHP que reciba un array de números y devuelva el promedio de esos números. Si el array está vacío, debe devolver un mensaje de error.
 
 #### Instrucciones:
 1. Crea una función llamada `calcularPromedio` que reciba un array de números.
 2. Si el array está vacío, devuelve un mensaje de error.
 3. Si el array contiene números, devuelve el promedio de esos números.
-4. Muestra el resultado en una vista sencilla donde puedas ingresar números y ver el resultado.
+4. Muestra el resultado en una vista sencilla donde se pueda ingresar números y ver el resultado.
 
 ---
 
-### 2. Laravel: CRUD Básico
+### Test 2
 
-#### Tarea:
-Crea una aplicación Laravel para gestionar un listado de tareas (To-Do List). La aplicación debe incluir:
+Usando este proyecto, crea una aplicación Laravel para gestionar un listado de tareas (To-Do List). La aplicación debe incluir:
 
 - **Modelos:**
     - Un modelo llamado `Task` con los campos:
@@ -38,20 +37,17 @@ Crea una aplicación Laravel para gestionar un listado de tareas (To-Do List). L
     - Implementa las operaciones CRUD:
         - Crear una nueva tarea.
         - Ver todas las tareas.
-        - Cambiar el estado de una tarea a "completada" (no es necesario eliminar).
-
-- **Rutas:**
-    - Define las rutas necesarias en `routes/web.php`.
+        - Cambiar el estado de una tarea a "completada".
+        - Eliminar tarea.
 
 - **Validación:**
     - Asegúrate de validar el campo `title` como obligatorio.
 
 #### Instrucciones:
-1. Crea el modelo `Task` y la migración correspondiente.
-2. Crea un controlador `TaskController` para las operaciones CRUD.
-3. Define las rutas para las operaciones Crear y Ver.
+1. Crea el modelo `Task` y el controlador `TaskController` para las operaciones CRUD.
+3. Define las rutas.
 4. Valida que el campo `title` sea obligatorio al crear tareas.
-5. Muestra una vista sencilla para crear tareas y ver el listado de tareas (puedes reciclar vistas si es necesario).
+5. Muestra una vista sencilla para crear tareas y ver el listado de tareas (puedes reciclar vistas si es necesario). En la vista se debera acceder a las opciones de crear, ver, actualizar o eliminar tareas.
 
 ---
 

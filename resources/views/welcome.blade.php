@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -164,6 +166,21 @@
                                 </div>
                             </div>
                         </div>
+                        <form id="form-promedio" action="{{ route('calcular-promedio') }}" method="POST">
+                            <div class="row form-numeros-container">
+                                    @csrf
+                                    <div class="form-group numero-container">
+                                        <label for="usr">Numero:</label>
+                                        <input type="number" name="array[]" class="form-control numero" id="numero">
+                                    </div>     
+                            </div>
+
+                            <button type="button" class="btn" id="agregar-numero">Agregar numero</button>
+                            <button type="submit" class="btn btn-primary">Calcular promedio</button>
+                            <div id="resultado">
+
+                            </div>
+                        </form>       
                     </main>
 
                     <footer class="py-16 text-center text-sm text-black dark:text-white/70">
@@ -173,4 +190,33 @@
             </div>
         </div>
     </body>
+
+    <script>
+        $(function() {
+            $('#agregar-numero').click(function(){
+                $( ".numero-container:first" ).clone().appendTo( ".form-numeros-container" );
+            })
+
+            $('#form-promedio').submit(function(e){
+                e.preventDefault();
+
+                jQuery.ajax({
+                    url: "{{ route('calcular-promedio') }}",
+                    method: 'post',
+                    data: {
+                        numeros: $(".numero").map(function(){return $(this).val();}).get(),
+                        _token: "{{ csrf_token() }}",
+                    },
+                    dataType: 'json',
+                    success: function(result){
+                        if (result.error) {
+                            $('#resultado').html("Ha habido un error");
+                        }
+
+                        $('#resultado').html("El promedio es: " + result.promedio);
+                    }
+                });
+            })
+        })
+    </script>
 </html>

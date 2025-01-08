@@ -58,6 +58,40 @@ Usando este proyecto, crea una aplicación Laravel para gestionar un listado de 
 2. Explica brevemente cómo funciona la consulta.
 3. Query de SQL normal.
 
+#### Consulta SQL para Usuarios con más de 5 Tareas Completadas
+
+SELECT users.id AS user_id, users.name AS user_name, COUNT(tasks.id) AS completed_tasks_count
+FROM users
+JOIN tasks ON users.id = tasks.user_id
+WHERE tasks.status = true
+GROUP BY users.id, users.name
+HAVING COUNT(tasks.id) > 5
+ORDER BY MAX(tasks.created_at) DESC;
+
+Selección de columnas:
+
+1. users.id AS user_id: Selecciona el ID del usuario.
+2. users.name AS user_name: Selecciona el nombre del usuario.
+3. COUNT(tasks.id) AS completed_tasks_count: Calcula el número de tareas completadas (status = true) por cada usuario.
+
+Unión de tablas:
+
+4. La consulta usa JOIN para unir las tablas users y tasks a través de la relación users.id = tasks.user_id, asegurando que cada tarea esté vinculada a su usuario correspondiente.
+
+5. WHERE tasks.status = true: Filtra las tareas para incluir solo aquellas que están completadas (status = true).
+
+Agrupación y conteo:
+
+6. GROUP BY users.id, users.name: Agrupa los resultados por usuario para calcular el conteo de tareas completadas por cada usuario.
+
+Filtrado por cantidad de tareas:
+
+7. HAVING COUNT(tasks.id) > 5: Filtra a los usuarios que tienen más de 5 tareas completadas.
+
+Orden cronológico:
+
+8. ORDER BY MAX(tasks.created_at) DESC: Ordena a los usuarios en base a la fecha más reciente en que una de sus tareas fue completada, de la más nueva a la más antigua.
+
 ---
 
 ### 4. Uso de Git

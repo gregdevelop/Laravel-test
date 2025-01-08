@@ -35,7 +35,7 @@ Usando este proyecto, crea una aplicación Laravel para gestionar un listado de 
 
 - **Controlador:**
     - Implementa las operaciones CRUD:
-        - Crear una nueva tarea.
+        - Crear una nueva tarea. 
         - Ver todas las tareas.
         - Cambiar el estado de una tarea a "completada".
         - Eliminar tarea.
@@ -56,6 +56,7 @@ Usando este proyecto, crea una aplicación Laravel para gestionar un listado de 
 #### Instrucciones:
 1. Escribe en este README, seguido de este texto, una consulta en SQL para encontrar todos los usuarios que tienen más de 5 tareas completadas organizandola cronologicamente de la tarea creada más actual a la más antigua.
 2. Explica brevemente cómo funciona la consulta.
+3. Query de SQL normal.
 
 ---
 
